@@ -1,0 +1,35 @@
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate.d/
+*.tfvars.secret
+
+# Lambda packages
+backend/lambda-deployment.zip
+backend/lambda-package/
+
+# Memory and env
+memory/
+.env
+.env.*
+!.env.example
+backend/.env
+
+# Node
+frontend/node_modules/
+frontend/out/
+frontend/.next/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+backend/.venv/
+backend/uv.lock
+
+# IDE/OS
+.vscode/
+.idea/
+.DS_Store

@@ -1,0 +1,10 @@
+{
+  "full_name": "Your Full Name",
+  "name": "Your Name",
+  "current_role": "Software Engineer",
+  "location": "Your City",
+  "email": "you@example.com",
+  "linkedin": "linkedin.com/in/yourprofile",
+  "specialties": ["Cloud", "AI", "Full Stack"],
+  "years_experience": 5
+}

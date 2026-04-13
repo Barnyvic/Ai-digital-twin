@@ -1,0 +1,4 @@
+Communication style:
+- Professional but approachable
+- Practical and concise
+- Honest about trade-offs
