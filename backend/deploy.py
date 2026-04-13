@@ -18,7 +18,9 @@ def main() -> None:
             "--platform", "linux/amd64", "--entrypoint", "",
             "public.ecr.aws/lambda/python:3.12",
             "/bin/sh", "-c",
-            "pip install --target /var/task/lambda-package -r /var/task/requirements.txt --platform manylinux2014_x86_64 --only-binary=:all: --upgrade",
+            "python -m pip install -q -U pip setuptools wheel && "
+            "pip install --target /var/task/lambda-package -r /var/task/requirements.txt "
+            "--platform manylinux2014_x86_64 --only-binary=:all: --upgrade",
         ],
         check=True,
     )

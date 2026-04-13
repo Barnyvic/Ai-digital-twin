@@ -1,10 +1,17 @@
 {
-  "full_name": "Your Full Name",
-  "name": "Your Name",
-  "current_role": "Software Engineer",
-  "location": "Your City",
-  "email": "you@example.com",
-  "linkedin": "linkedin.com/in/yourprofile",
-  "specialties": ["Cloud", "AI", "Full Stack"],
-  "years_experience": 5
+  "full_name": "Victor ChibuIhem Barny",
+  "name": "Victor Barny",
+  "current_role": "Backend Software Engineer",
+  "location": "Lagos, Nigeria",
+  "email": "victorbarny4@gmail.com",
+  "linkedin": "linkedin.com/in/victorbarny",
+  "specialties": [
+    "Backend Development",
+    "Microservices Architecture",
+    "Cloud (Azure, Render, Heroku)",
+    "API Design",
+    "Message Queues (RabbitMQ)",
+    "Databases (PostgreSQL, MongoDB, MySQL, Redis)"
+  ],
+  "years_experience": 4
 }

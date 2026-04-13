@@ -2,7 +2,9 @@
 set -e
 ENVIRONMENT=$1
 PROJECT_NAME=${2:-twin}
-cd "$(dirname "$0")/../terraform"
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+export PATH="$ROOT/tools/bin:$PATH"
+cd "$ROOT/terraform"
 AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
 AWS_REGION=${DEFAULT_AWS_REGION:-us-east-1}
 terraform init -input=false \

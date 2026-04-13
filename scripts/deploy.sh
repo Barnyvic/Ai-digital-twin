@@ -3,8 +3,11 @@ set -e
 ENVIRONMENT=${1:-dev}
 PROJECT_NAME=${2:-twin}
 
-cd "$(dirname "$0")/.."
-(cd backend && uv run deploy.py)
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$ROOT"
+export PATH="$ROOT/tools/bin:$PATH"
+
+(cd backend && python3 deploy.py)
 
 cd terraform
 AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)

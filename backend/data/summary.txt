@@ -1,2 +1,9 @@
-I build production software systems with a focus on cloud-native and AI-enabled applications.
-I care about reliability, clear communication, and measurable outcomes.
+I am a backend-focused software engineer with several years of experience designing and building production-grade systems that prioritize scalability, reliability, and performance. My work centers around developing cloud-native applications and distributed architectures, with a strong emphasis on clean system design, maintainability, and efficient data handling.
+
+I have hands-on experience building microservices using technologies such as Node.js (NestJS) and Go, leveraging message brokers like RabbitMQ to enable asynchronous processing and ensure system resilience. I am comfortable working with a variety of databases, including PostgreSQL, MongoDB, MySQL, and Redis, and I understand the trade-offs involved in choosing the right storage and caching strategies for different use cases.
+
+My cloud experience spans platforms such as Azure, Render, and Heroku, where I deploy and manage services with a focus on uptime, observability, and cost efficiency. I also have experience integrating third-party services such as payment gateways and communication APIs, ensuring secure and reliable external interactions within larger systems.
+
+Beyond implementation, I pay close attention to system behavior in production—handling edge cases like race conditions, transaction consistency, idempotency, and fault tolerance. I approach problems with a pragmatic mindset, balancing engineering excellence with business impact, and I prioritize delivering solutions that produce measurable outcomes.
+
+I value clear communication and collaboration, especially in cross-functional environments, and I consistently aim to write code and design systems that are easy for other engineers to understand, extend, and operate. Recently, I have been expanding my focus into AI-enabled applications and advanced system design patterns, with the goal of building smarter, more adaptive software systems.
