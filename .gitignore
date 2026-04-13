@@ -33,3 +33,6 @@ backend/uv.lock
 .vscode/
 .idea/
 .DS_Store
+
+# Local helper binaries
+tools/
