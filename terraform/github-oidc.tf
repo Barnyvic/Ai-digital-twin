@@ -39,6 +39,11 @@ resource "aws_iam_role_policy_attachment" "github_s3" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
 }
 
+resource "aws_iam_role_policy_attachment" "github_dynamodb" {
+  role       = aws_iam_role.github_actions.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess"
+}
+
 resource "aws_iam_role_policy_attachment" "github_apigateway" {
   role       = aws_iam_role.github_actions.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonAPIGatewayAdministrator"
