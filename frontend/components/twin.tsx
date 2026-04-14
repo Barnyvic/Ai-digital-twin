@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { Fragment, type ReactNode, useEffect, useRef, useState } from "react";
 import { Bot, Send, User } from "lucide-react";
 
 interface Message {
@@ -8,6 +8,95 @@ interface Message {
   role: "user" | "assistant";
   content: string;
   timestamp: Date;
+}
+
+function formatInline(text: string) {
+  const parts = text.split(/(\*\*[^*]+\*\*|https?:\/\/[^\s]+|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})/g);
+  return parts.map((part, index) => {
+    if (!part) return null;
+
+    if (part.startsWith("**") && part.endsWith("**") && part.length > 4) {
+      return <strong key={index}>{part.slice(2, -2)}</strong>;
+    }
+
+    if (/^https?:\/\/[^\s]+$/.test(part)) {
+      return (
+        <a
+          key={index}
+          href={part}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-slate-700 underline underline-offset-2 hover:text-slate-900"
+        >
+          {part}
+        </a>
+      );
+    }
+
+    if (/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(part)) {
+      return (
+        <a
+          key={index}
+          href={`mailto:${part}`}
+          className="text-slate-700 underline underline-offset-2 hover:text-slate-900"
+        >
+          {part}
+        </a>
+      );
+    }
+
+    return <Fragment key={index}>{part}</Fragment>;
+  });
+}
+
+function renderMessageContent(content: string) {
+  const lines = content.split("\n");
+  const elements: ReactNode[] = [];
+  let index = 0;
+
+  while (index < lines.length) {
+    const line = lines[index];
+
+    if (!line.trim()) {
+      index += 1;
+      continue;
+    }
+
+    if (line.startsWith("### ")) {
+      elements.push(
+        <h3 key={`h-${index}`} className="text-base font-semibold mb-2">
+          {formatInline(line.replace(/^###\s+/, ""))}
+        </h3>,
+      );
+      index += 1;
+      continue;
+    }
+
+    if (/^-\s+/.test(line)) {
+      const items: string[] = [];
+      while (index < lines.length && /^-\s+/.test(lines[index])) {
+        items.push(lines[index].replace(/^-\s+/, ""));
+        index += 1;
+      }
+      elements.push(
+        <ul key={`ul-${index}`} className="list-disc pl-5 space-y-1 my-2">
+          {items.map((item, itemIndex) => (
+            <li key={itemIndex}>{formatInline(item)}</li>
+          ))}
+        </ul>,
+      );
+      continue;
+    }
+
+    elements.push(
+      <p key={`p-${index}`} className="mb-2">
+        {formatInline(line)}
+      </p>,
+    );
+    index += 1;
+  }
+
+  return <div className="leading-relaxed">{elements}</div>;
 }
 
 export default function Twin() {
@@ -111,7 +200,11 @@ export default function Twin() {
                   : "bg-white border border-gray-200 text-gray-800"
               }`}
             >
-              <p className="whitespace-pre-wrap">{message.content}</p>
+              {message.role === "assistant" ? (
+                renderMessageContent(message.content)
+              ) : (
+                <p className="whitespace-pre-wrap">{message.content}</p>
+              )}
             </div>
 
             {message.role === "user" && (
